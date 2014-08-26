@@ -24,6 +24,10 @@ for i in `find ${ANDROID_BUILD_TOP}/external/clang/lib/Headers -mindepth 1 ! -na
   cp -a $i lib/clang/*/include/
 done
 
+# Copy over stdatomic.h from bionic
+echo Copying stdatomic.h
+cp -a ${ANDROID_BUILD_TOP}/bionic/libc/include/stdatomic.h lib/clang/*/include/
+
 echo Copying arm_neon.h
 cp -a `find ${ANDROID_PRODUCT_OUT} -name arm_neon.h` lib/clang/*/include
 
